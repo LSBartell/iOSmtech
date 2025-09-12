@@ -47,10 +47,8 @@ for (_, value) in dictionaryAny {
         total2 += double
     } else if let integer = value as? Int {
         total2 += Double(integer)
-    } else if let string = value as? String {
-        if let stringDouble = Double(string) {
+    } else if let string = value as? String, let stringDouble = Double(string) {
             total2 += stringDouble
-        }
     }
 }
 print(total2)
