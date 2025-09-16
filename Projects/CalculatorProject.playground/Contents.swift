@@ -7,17 +7,28 @@ enum Operator: String {
 }
 var total = 0.0
 var inputNumber = ""
+var inputNumberPercent = false
 var runningNumber = ""
+var runningNumberPercent = false
 var currentOperator: Operator?
+
 @MainActor func numberButton(_ input: KeyPadNumber) {
     inputNumber.append(input.rawValue)
-    print(inputNumber)
+    if inputNumberPercent {
+        print(inputNumber,"%")
+    } else {
+        print(inputNumber)
+    }
 }
 
 @MainActor func operatorButton(_ input: Operator) {
     runningNumber = inputNumber
     inputNumber = ""
     currentOperator = input
+    if inputNumberPercent {
+        runningNumberPercent = true
+        inputNumberPercent = false
+    }
     if let currentOperator {
         print(currentOperator.rawValue)
     }
@@ -63,16 +74,38 @@ var currentOperator: Operator?
     currentOperator = nil
 }
 
+@MainActor func negativeOrPositiveButton() {
+    if let first = inputNumber.first {
+        if first != "-" {
+            inputNumber.insert("-", at: inputNumber.startIndex)
+        } else {
+            inputNumber.remove(at: inputNumber.startIndex)
+        }
+    } else {
+        inputNumber.append("-")
+    }
+    print(inputNumber)
+}
+
+@MainActor func percentButton() {
+    if inputNumberPercent {
+        inputNumberPercent = false
+    } else {
+        inputNumberPercent = true
+    }
+    if inputNumberPercent {
+        print(inputNumber,"%")
+    } else {
+        print(inputNumber)
+    }
+}
 
 
-numberButton(.n7)
+numberButton(.n1)
 numberButton(.n5)
-operatorButton(.add)
-numberButton(.n6)
-numberButton(.n3)
-equalsButton()
 operatorButton(.subtract)
-numberButton(.n8)
+negativeOrPositiveButton()
+numberButton(.n5)
 equalsButton()
-clearButton()
-print(total)
+
+
