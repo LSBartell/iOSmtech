@@ -38,33 +38,87 @@ var currentOperator: Operator?
     if let runningNumber = Double(runningNumber), let inputNumber = Double(inputNumber) {
         switch currentOperator {
         case .add:
-            total = runningNumber + inputNumber
+            if runningNumberPercent && inputNumberPercent {
+                total = (runningNumber / 100) + (inputNumber / 100)
+            } else if runningNumberPercent && !inputNumberPercent {
+                total = (runningNumber / 100) + inputNumber
+            } else if !runningNumberPercent && inputNumberPercent {
+                total = runningNumber + ((runningNumber / 100) * inputNumber)
+            } else {
+                total = runningNumber + inputNumber
+            }
         case .subtract:
-            total = runningNumber - inputNumber
+            if runningNumberPercent && inputNumberPercent {
+                total = (runningNumber / 100) - (inputNumber / 100)
+            } else if runningNumberPercent && !inputNumberPercent {
+                total = (runningNumber / 100) - inputNumber
+            } else if !runningNumberPercent && inputNumberPercent {
+                total = runningNumber - ((runningNumber / 100) * inputNumber)
+            } else {
+                total = runningNumber - inputNumber
+            }
         case .multiply:
-            total = runningNumber * inputNumber
+            if runningNumberPercent && inputNumberPercent {
+                total = (runningNumber / 100) * (inputNumber / 100)
+            } else if runningNumberPercent && !inputNumberPercent {
+                total = (runningNumber / 100) * inputNumber
+            } else if !runningNumberPercent && inputNumberPercent {
+                total = runningNumber * ((runningNumber / 100) * inputNumber)
+            } else {
+                total = runningNumber * inputNumber
+            }
         case .divide:
-            total = runningNumber / inputNumber
+            if runningNumberPercent && inputNumberPercent {
+                total = (runningNumber / 100) / (inputNumber / 100)
+            } else if runningNumberPercent && !inputNumberPercent {
+                total = (runningNumber / 100) / inputNumber
+            } else if !runningNumberPercent && inputNumberPercent {
+                total = runningNumber / ((runningNumber / 100) * inputNumber)
+            } else {
+                total = runningNumber / inputNumber
+            }
         default:
             total = inputNumber
         }
     } else if let inputNumber = Double(inputNumber) {
         switch currentOperator {
         case .add:
-            total += inputNumber
+            if inputNumberPercent {
+                total += ((total / 100) * inputNumber)
+            } else {
+                total += inputNumber
+            }
         case .subtract:
-            total -= inputNumber
+            if inputNumberPercent {
+                total -= ((total / 100) * inputNumber)
+            } else {
+                total -= inputNumber
+            }
         case .multiply:
-            total *= inputNumber
+            if inputNumberPercent {
+                total *= ((total / 100) * inputNumber)
+            } else {
+                total *= inputNumber
+            }
         case .divide:
-            total /= inputNumber
+            if inputNumberPercent {
+                total /= ((total / 100) * inputNumber)
+            } else {
+                total /= inputNumber
+            }
         case nil:
-            total = inputNumber
+            if inputNumberPercent {
+                total = inputNumber / 100
+            } else {
+                total = inputNumber
+            }
         }
     }
     print(total)
     inputNumber = ""
     runningNumber = ""
+    inputNumberPercent = false
+    runningNumberPercent = false
 }
 
 @MainActor func clearButton() {
