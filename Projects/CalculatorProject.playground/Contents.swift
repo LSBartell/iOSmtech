@@ -1,18 +1,33 @@
 enum KeyPadNumber: String {
-    case n1 = "1", n2 = "2", n3 = "3", n4 = "4", n5 = "5", n6 = "6", n7 = "7", n8 = "8", n9 = "9", nPoint = "."
+    case n1 = "1", n2 = "2", n3 = "3", n4 = "4", n5 = "5", n6 = "6", n7 = "7", n8 = "8", n9 = "9", nPoint = ".", n0 = "0"
 }
 
 enum Operator: String {
     case add = "+", subtract = "-", multiply = "*", divide = "/"
 }
 var total = 0.0
-var inputNumber = ""
+var inputNumber = "0"
 var inputNumberPercent = false
 var runningNumber = ""
 var runningNumberPercent = false
 var currentOperator: Operator?
 
+print(inputNumber)
+
+// defaults as 0
+// when add . dont remove 0
+// cannot add multiple decimal points
+// cannot add multiple 0s to 0
+// removes 0 when no decimal point and number is input
 @MainActor func numberButton(_ input: KeyPadNumber) {
+    if inputNumber.contains(".") && input == .nPoint {
+        return
+    }
+    if !inputNumber.contains(".") {
+        if inputNumber.first == "0" && input != .nPoint {
+            inputNumber.remove(at: inputNumber.startIndex)
+        }
+    }
     inputNumber.append(input.rawValue)
     if inputNumberPercent {
         print(inputNumber,"%")
@@ -22,8 +37,10 @@ var currentOperator: Operator?
 }
 
 @MainActor func operatorButton(_ input: Operator) {
-    runningNumber = inputNumber
-    inputNumber = ""
+    if runningNumber == "" {
+        runningNumber = inputNumber
+    }
+    inputNumber = "0"
     currentOperator = input
     if inputNumberPercent {
         runningNumberPercent = true
@@ -115,19 +132,41 @@ var currentOperator: Operator?
         }
     }
     print(total)
-    inputNumber = ""
+    inputNumber = "0"
     runningNumber = ""
     inputNumberPercent = false
     runningNumberPercent = false
 }
 
-@MainActor func clearButton() {
-    total = 0.0
-    inputNumber = ""
-    runningNumber = ""
-    currentOperator = nil
+enum DeleteClearPress {
+    case press, hold
 }
+//clear once remove one number, hold clear all
+@MainActor func deleteClearButton(_ pressType: DeleteClearPress) {
+    guard pressType == .press else {
+        inputNumber = "0"
+        runningNumber = ""
+        inputNumberPercent = false
+        runningNumberPercent = false
+        total = 0.0
+        print(inputNumber)
+        return
+    }
+    if inputNumber != "0" {
+        if inputNumberPercent {
+            inputNumberPercent = false
+        } else {
+            inputNumber.remove(at: inputNumber.endIndex)
+            if inputNumber.isEmpty { inputNumber = "0"}
+        }
+    } else if inputNumber == "0" && currentOperator != nil {
+        currentOperator = nil
+    } else {
+        inputNumber.remove(at: inputNumber.endIndex)
+    }
 
+}
+// dont allow -0
 @MainActor func negativeOrPositiveButton() {
     if let first = inputNumber.first {
         if first != "-" {
@@ -155,11 +194,5 @@ var currentOperator: Operator?
 }
 
 
-numberButton(.n1)
-numberButton(.n5)
-operatorButton(.subtract)
-negativeOrPositiveButton()
-numberButton(.n5)
-equalsButton()
 
 
