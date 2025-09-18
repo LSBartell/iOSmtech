@@ -13,8 +13,10 @@ struct Calculator {
     var runningNumber = ""
     var runningNumberPercent = false
     var currentOperator: Operator?
+    var equalsFromOperator = false
+    var fromOperator = ""
     
-    mutating func display() {
+    func display() {
         if runningNumber == "" && currentOperator == nil {
             if inputNumberPercent {
                 print(inputNumber, "%")
@@ -28,7 +30,26 @@ struct Calculator {
                 } else {
                     print(runningNumber, " \(currentOperator.rawValue)")
                 }
+            } else if runningNumber == "" {
+                if inputNumberPercent {
+                    print(total, "\(currentOperator.rawValue)", inputNumber, "%")
+                } else {
+                    print(total, "\(currentOperator.rawValue)", inputNumber)
+                }
+            } else {
+                switch (runningNumberPercent, inputNumberPercent) {
+                case (true, true):
+                    print(runningNumber, "%", " \(currentOperator.rawValue)", inputNumber, "%")
+                case (false, true):
+                    print(runningNumber, " \(currentOperator.rawValue)", inputNumber, "%")
+                case (true, false):
+                    print(runningNumber, "%", " \(currentOperator.rawValue)", inputNumber)
+                case (false, false):
+                    print(runningNumber, " \(currentOperator.rawValue)", inputNumber)
+                }
             }
+        } else {
+            print(runningNumber)
         }
     }
     
@@ -47,14 +68,24 @@ struct Calculator {
             }
         }
         inputNumber.append(input.rawValue)
-        if inputNumberPercent {
-            print(inputNumber,"%")
-        } else {
-            print(inputNumber)
-        }
+        
+        display()
     }
     
     mutating func operatorButton(_ input: Operator) {
+        guard currentOperator == nil else {
+            if inputNumber == "0" {
+                currentOperator = input
+                return
+            } else {
+                fromOperator = input.rawValue
+                equalsFromOperator = true
+                equalsButton()
+                currentOperator = input
+                fromOperator = ""
+            }
+            return
+        }
         if runningNumber == "" {
             runningNumber = inputNumber
         }
@@ -64,9 +95,8 @@ struct Calculator {
             runningNumberPercent = true
             inputNumberPercent = false
         }
-        if let currentOperator {
-            print(currentOperator.rawValue)
-        }
+        
+        display()
     }
     
     mutating func equalsButton() {
@@ -149,11 +179,16 @@ struct Calculator {
                 }
             }
         }
-        print(total)
+        if equalsFromOperator {
+            print(total, fromOperator)
+        } else {
+            print(total)
+        }
         inputNumber = "0"
         runningNumber = ""
         inputNumberPercent = false
         runningNumberPercent = false
+        currentOperator = nil
     }
     
     enum DeleteClearPress {
@@ -174,15 +209,22 @@ struct Calculator {
             if inputNumberPercent {
                 inputNumberPercent = false
             } else {
-                inputNumber.remove(at: inputNumber.endIndex)
+                inputNumber.removeLast()
                 if inputNumber.isEmpty { inputNumber = "0"}
             }
         } else if inputNumber == "0" && currentOperator != nil {
             currentOperator = nil
+        } else if inputNumber == "0" && currentOperator == nil && !runningNumber.isEmpty {
+            runningNumber.removeLast()
         } else {
-            inputNumber.remove(at: inputNumber.endIndex)
+            inputNumber = "0"
+            runningNumber = ""
+            inputNumberPercent = false
+            runningNumberPercent = false
+            total = 0.0
         }
         
+        display()
     }
     // dont allow -0
     mutating func negativeOrPositiveButton() {
@@ -195,7 +237,7 @@ struct Calculator {
         } else {
             inputNumber.append("-")
         }
-        print(inputNumber)
+        display()
     }
     
     mutating func percentButton() {
@@ -204,14 +246,60 @@ struct Calculator {
         } else {
             inputNumberPercent = true
         }
-        if inputNumberPercent {
-            print(inputNumber,"%")
-        } else {
-            print(inputNumber)
-        }
+        display()
     }
 }
 var calculator = Calculator()
-calculator.numberButton(.n3)
-calculator.operatorButton(.add)
 calculator.display()
+calculator.numberButton(.n5)
+calculator.operatorButton(.add)
+calculator.numberButton(.n4)
+calculator.operatorButton(.subtract)
+calculator.numberButton(.n3)
+calculator.equalsButton()
+
+calculator.numberButton(.n6)
+calculator.operatorButton(.subtract)
+calculator.numberButton(.n2)
+calculator.equalsButton()
+calculator.deleteClearButton(.press)
+calculator.deleteClearButton(.press)
+
+calculator.numberButton(.n5)
+calculator.percentButton()
+calculator.operatorButton(.add)
+calculator.numberButton(.n3)
+calculator.numberButton(.n0)
+calculator.equalsButton()
+
+calculator.numberButton(.n3)
+calculator.numberButton(.n0)
+calculator.operatorButton(.add)
+calculator.numberButton(.n5)
+calculator.percentButton()
+calculator.equalsButton()
+
+calculator.deleteClearButton(.hold)
+
+calculator.numberButton(.n6)
+calculator.numberButton(.n3)
+calculator.operatorButton(.multiply)
+calculator.numberButton(.n2)
+calculator.percentButton()
+calculator.deleteClearButton(.press)
+calculator.deleteClearButton(.press)
+calculator.deleteClearButton(.press)
+calculator.deleteClearButton(.press)
+calculator.deleteClearButton(.press)
+calculator.currentOperator
+
+calculator.numberButton(.n2)
+calculator.negativeOrPositiveButton()
+calculator.operatorButton(.multiply)
+calculator.numberButton(.n5)
+calculator.equalsButton()
+calculator.deleteClearButton(.hold)
+
+
+
+
