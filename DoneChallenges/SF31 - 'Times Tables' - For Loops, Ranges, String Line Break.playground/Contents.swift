@@ -28,10 +28,8 @@
 import Foundation
 
 func multiplicationTable(for interger: Int) {
-    var counter = 0
     var table = ""
-    for _ in 1...10 {
-        counter += 1
+    for counter in 1...10 {
         table.append("\(counter) * \(interger) = \(counter * interger) \n")
     }
     print(table)
@@ -42,9 +40,7 @@ multiplicationTable(for: 5)
 func blackDiamond(for array: [Int]) {
     var table = ""
     for number in array {
-        var counter = 0
-        for _ in 1...10 {
-            counter += 1
+        for counter in 1...10 {
             table.append("\(counter) * \(number) = \(counter * number) \n")
         }
     }
