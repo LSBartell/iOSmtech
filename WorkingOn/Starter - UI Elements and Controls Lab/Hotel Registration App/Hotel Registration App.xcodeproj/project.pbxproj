@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		00AF1C0C2E86E5C7001E3527 /* PropertyWrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PropertyWrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A5690002E86ECDF002EA3A5 /* Hotel Registration App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hotel Registration App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		00AF1C0E2E86E5C7001E3527 /* PropertyWrappers */ = {
+		0A5690022E86ECDF002EA3A5 /* Hotel Registration App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PropertyWrappers;
+			path = "Hotel Registration App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		00AF1C092E86E5C7001E3527 /* Frameworks */ = {
+		0A568FFD2E86ECDF002EA3A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00AF1C032E86E5C7001E3527 = {
+		0A568FF72E86ECDF002EA3A5 = {
 			isa = PBXGroup;
 			children = (
-				00AF1C0E2E86E5C7001E3527 /* PropertyWrappers */,
-				00AF1C0D2E86E5C7001E3527 /* Products */,
+				0A5690022E86ECDF002EA3A5 /* Hotel Registration App */,
+				0A5690012E86ECDF002EA3A5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		00AF1C0D2E86E5C7001E3527 /* Products */ = {
+		0A5690012E86ECDF002EA3A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				00AF1C0C2E86E5C7001E3527 /* PropertyWrappers.app */,
+				0A5690002E86ECDF002EA3A5 /* Hotel Registration App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00AF1C0B2E86E5C7001E3527 /* PropertyWrappers */ = {
+		0A568FFF2E86ECDF002EA3A5 /* Hotel Registration App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AF1C172E86E5C9001E3527 /* Build configuration list for PBXNativeTarget "PropertyWrappers" */;
+			buildConfigurationList = 0A56900B2E86ECE1002EA3A5 /* Build configuration list for PBXNativeTarget "Hotel Registration App" */;
 			buildPhases = (
-				00AF1C082E86E5C7001E3527 /* Sources */,
-				00AF1C092E86E5C7001E3527 /* Frameworks */,
-				00AF1C0A2E86E5C7001E3527 /* Resources */,
+				0A568FFC2E86ECDF002EA3A5 /* Sources */,
+				0A568FFD2E86ECDF002EA3A5 /* Frameworks */,
+				0A568FFE2E86ECDF002EA3A5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				00AF1C0E2E86E5C7001E3527 /* PropertyWrappers */,
+				0A5690022E86ECDF002EA3A5 /* Hotel Registration App */,
 			);
-			name = PropertyWrappers;
+			name = "Hotel Registration App";
 			packageProductDependencies = (
 			);
-			productName = PropertyWrappers;
-			productReference = 00AF1C0C2E86E5C7001E3527 /* PropertyWrappers.app */;
+			productName = "Hotel Registration App";
+			productReference = 0A5690002E86ECDF002EA3A5 /* Hotel Registration App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		00AF1C042E86E5C7001E3527 /* Project object */ = {
+		0A568FF82E86ECDF002EA3A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					00AF1C0B2E86E5C7001E3527 = {
-						CreatedOnToolsVersion = 26.0.1;
+					0A568FFF2E86ECDF002EA3A5 = {
+						CreatedOnToolsVersion = 26.0;
 					};
 				};
 			};
-			buildConfigurationList = 00AF1C072E86E5C7001E3527 /* Build configuration list for PBXProject "PropertyWrappers" */;
+			buildConfigurationList = 0A568FFB2E86ECDF002EA3A5 /* Build configuration list for PBXProject "Hotel Registration App" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 00AF1C032E86E5C7001E3527;
+			mainGroup = 0A568FF72E86ECDF002EA3A5;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 00AF1C0D2E86E5C7001E3527 /* Products */;
+			productRefGroup = 0A5690012E86ECDF002EA3A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00AF1C0B2E86E5C7001E3527 /* PropertyWrappers */,
+				0A568FFF2E86ECDF002EA3A5 /* Hotel Registration App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		00AF1C0A2E86E5C7001E3527 /* Resources */ = {
+		0A568FFE2E86ECDF002EA3A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		00AF1C082E86E5C7001E3527 /* Sources */ = {
+		0A568FFC2E86ECDF002EA3A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		00AF1C152E86E5C9001E3527 /* Debug */ = {
+		0A5690092E86ECE1002EA3A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -160,7 +160,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = HC82USA5SM;
+				DEVELOPMENT_TEAM = SR297L5V26;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -189,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		00AF1C162E86E5C9001E3527 /* Release */ = {
+		0A56900A2E86ECE1002EA3A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -224,7 +224,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = HC82USA5SM;
+				DEVELOPMENT_TEAM = SR297L5V26;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -246,14 +246,14 @@
 			};
 			name = Release;
 		};
-		00AF1C182E86E5C9001E3527 /* Debug */ = {
+		0A56900C2E86ECE1002EA3A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HC82USA5SM;
+				DEVELOPMENT_TEAM = SR297L5V26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -266,7 +266,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mtest.PropertyWrappers;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mountainlandtechnical.Hotel-Registration-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -278,14 +278,14 @@
 			};
 			name = Debug;
 		};
-		00AF1C192E86E5C9001E3527 /* Release */ = {
+		0A56900D2E86ECE1002EA3A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HC82USA5SM;
+				DEVELOPMENT_TEAM = SR297L5V26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -298,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mtest.PropertyWrappers;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mountainlandtechnical.Hotel-Registration-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -313,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00AF1C072E86E5C7001E3527 /* Build configuration list for PBXProject "PropertyWrappers" */ = {
+		0A568FFB2E86ECDF002EA3A5 /* Build configuration list for PBXProject "Hotel Registration App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00AF1C152E86E5C9001E3527 /* Debug */,
-				00AF1C162E86E5C9001E3527 /* Release */,
+				0A5690092E86ECE1002EA3A5 /* Debug */,
+				0A56900A2E86ECE1002EA3A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AF1C172E86E5C9001E3527 /* Build configuration list for PBXNativeTarget "PropertyWrappers" */ = {
+		0A56900B2E86ECE1002EA3A5 /* Build configuration list for PBXNativeTarget "Hotel Registration App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00AF1C182E86E5C9001E3527 /* Debug */,
-				00AF1C192E86E5C9001E3527 /* Release */,
+				0A56900C2E86ECE1002EA3A5 /* Debug */,
+				0A56900D2E86ECE1002EA3A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 00AF1C042E86E5C7001E3527 /* Project object */;
+	rootObject = 0A568FF82E86ECDF002EA3A5 /* Project object */;
 }
