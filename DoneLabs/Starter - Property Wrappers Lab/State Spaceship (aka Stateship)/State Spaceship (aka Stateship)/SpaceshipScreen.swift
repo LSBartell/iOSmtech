@@ -43,12 +43,14 @@ struct SpaceshipScreen: View {
 
 struct HelmStation: View {
    @Environment(ShipComputer.self) var shipComputer
+    @State var inChair: Bool = false
    var body: some View {
        @Bindable var shipComputer = shipComputer
         HStack {
-            CrewChair(crewMember: .dog)
+            CrewChair(crewMember: .dog, inChair: $inChair)
             
             TextField("Heading", text: $shipComputer.heading)
+                .disabled(!inChair)
         }
     }
 }
@@ -57,10 +59,11 @@ struct WeaponsStation: View {
     @Environment(ShipComputer.self) var shipComputer
     @State var weaponIsOn = false
     @State var weaponPower = 0
+    @State var inChair: Bool = false
     var body: some View {
         @Bindable var shipComputer = shipComputer
         HStack {
-            CrewChair(crewMember: .cat)
+            CrewChair(crewMember: .cat, inChair: $inChair)
             
             VStack {
                 Toggle("Weapons Power: \(weaponPower)", isOn: $weaponIsOn)
@@ -71,6 +74,7 @@ struct WeaponsStation: View {
                                 } else {
                                     weaponPower = 0
                                     shipComputer.availablePower += 3
+
                                 }
                             }
                 
@@ -82,37 +86,61 @@ struct WeaponsStation: View {
                     }
                 }
             }
+            .disabled(!inChair)
         }
     }
 }
 
 struct ShieldStation: View {
     @Environment(ShipComputer.self) var shipComputer
+    @State var shieldPower = 0
+    @State var inChair: Bool = false
     var body: some View {
         @Bindable var shipComputer = shipComputer
         HStack {
-            CrewChair(crewMember: .lizard)
+            CrewChair(crewMember: .lizard, inChair: $inChair)
             
-            Stepper("Shield Power: \(0)", value: .constant(0), in: 0...10)
+            Stepper("Shield Power: \(shieldPower)", value: $shieldPower, in: 0...10)
+                .onChange(of: shieldPower) { oldValue, newValue in
+                    let difference = newValue - oldValue
+                    
+                    shipComputer.availablePower -= difference
+                    
+                    if shipComputer.availablePower < 0 {
+                        shieldPower = oldValue
+                    }
+                }
+                .disabled(!inChair)
         }
     }
 }
 
 struct EngineStation: View {
     @Environment(ShipComputer.self) var shipComputer
+    @State var enginePower = 0
+    @State var inChair: Bool = false
     var body: some View {
         @Bindable var shipComputer = shipComputer
         HStack {
-            CrewChair(crewMember: .hare)
-            Stepper("Engine Power: \(0)", value: .constant(0), in: 0...10)
-
+            CrewChair(crewMember: .hare, inChair: $inChair)
+            Stepper("Engine Power: \(enginePower)", value: $enginePower, in: 0...10)
+                .onChange(of: enginePower) { oldValue, newValue in
+                    let difference = newValue - oldValue
+                    
+                    shipComputer.availablePower -= difference
+                    
+                    if shipComputer.availablePower < 0 {
+                        enginePower = oldValue
+                    }
+                }
+                .disabled(!inChair)
         }
     }
 }
 
 struct CrewChair: View {
     var crewMember: Crew
-    @State var inChair: Bool = false
+    @Binding var inChair: Bool
     
     var body: some View {
         Button {
