@@ -76,7 +76,7 @@ struct HotelRegistrationScreen: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundStyle(.white)
                         }
-                    TextField("First name field", text: $lastName, prompt: Text("Firstname"))
+                    TextField("First name field", text: $firstName, prompt: Text("Firstname"))
                         .padding(5)
                         .background {
                             RoundedRectangle(cornerRadius: 10)

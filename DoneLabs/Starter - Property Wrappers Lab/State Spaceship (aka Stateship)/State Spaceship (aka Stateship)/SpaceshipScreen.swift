@@ -153,6 +153,7 @@ struct CrewChair: View {
             }
         }
         .padding(5)
+        .buttonStyle(.plain)
         .background {
             Circle()
                 .foregroundStyle(.gray)
