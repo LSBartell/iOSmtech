@@ -27,11 +27,10 @@ let myArray = ["Bob", "Jill", "Sally"]
 print(reverseAlphabetical(array: myArray))
 
 func blackDiamond(array: [String]) -> [String] {
-    var mutableArray = array
     var newArray: [String] = []
-    for string in mutableArray {
-        var newString: String
-        newString = String(string.sorted { $0 > $1 })
+    for string in array {
+        var newString = string.lowercased()
+        newString = String(newString.sorted { $0 > $1 })
         newArray.append(newString)
     }
     
