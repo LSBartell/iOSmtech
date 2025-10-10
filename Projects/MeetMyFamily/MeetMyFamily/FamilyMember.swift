@@ -24,6 +24,6 @@ extension FamilyMember {
         FamilyMember(firstName: "Maren", lastName: "Bartell", isMarried: true, picture: Image("Maren"), favoriteColor: .yellow, Age: 24, hasBeenSeen: false),
         FamilyMember(firstName: "Mark", lastName: "Bartell", isMarried: false, picture: Image("Mark"), favoriteColor: .red, Age: 5, hasBeenSeen: false),
         FamilyMember(firstName: "ElleJay", lastName: "Bartell", isMarried: false, picture: Image("ElleJay"), favoriteColor: .green, Age: 4, hasBeenSeen: false),
-        FamilyMember(firstName: "Aaron", lastName: "Bartell", isMarried: false, picture: Image("Aaron"), favoriteColor: .pink, Age: 3, hasBeenSeen: false)
+        FamilyMember(firstName: "Aaron", lastName: "Bartell", isMarried: false, picture: Image("Aaron"), favoriteColor: .aaron, Age: 3, hasBeenSeen: false)
     ]
 }
