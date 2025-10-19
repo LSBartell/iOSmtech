@@ -13,6 +13,12 @@ struct Question: Identifiable {
     var type: ResponseType
     var answers: [Answer]
     var questionNumber: Int
+    var savedAnswerType: [BattlefieldClass]
+    var savedAnswer1 = false
+    var savedAnswer2 = false
+    var savedAnswer3 = false
+    var savedAnswer4 = false
+    
 }
 enum ResponseType {
     case single, multiple, ranged

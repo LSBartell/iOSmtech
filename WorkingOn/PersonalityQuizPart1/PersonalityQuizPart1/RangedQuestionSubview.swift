@@ -11,27 +11,30 @@ import Foundation
 struct RangedQuestionSubview: View {
     @State var value: Double = 0
     @State var answer: String = "Not at all"
+    @Binding var quizManager: QuizManager
+    
     func sliderSwitch(){
         switch Int(value) {
         case 1:
-            answer = "Not at all"
+            answer = quizManager.questionList[quizManager.currentQuestion].answers[0].text
+            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[0].type]
         case 2:
-            answer = "A little"
+            answer = quizManager.questionList[quizManager.currentQuestion].answers[1].text
+            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[1].type]
         case 3:
-            answer = "A fair amount"
+            answer = quizManager.questionList[quizManager.currentQuestion].answers[2].text
+            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[2].type]
         default:
-            answer = "A lot"
+            answer = quizManager.questionList[quizManager.currentQuestion].answers[3].text
+            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[4].type]
         }
     }
     
     var body: some View {
-        NavigationStack {
-        ZStack {
-            LinearGradient(colors: [.gray, .white], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+        let current = quizManager.questionList[quizManager.currentQuestion]
             VStack {
                 ScrollView {
-                    Text("Question")
+                    Text(current.text)
                         .frame(width: 375)
                         .font(.custom("Copperplate", size: 35))
                         .background(
@@ -55,15 +58,5 @@ struct RangedQuestionSubview: View {
                 Spacer()
                 }
             }
-        .toolbar {
-            Button(action: {}) {
-                Image(systemName: "chevron.right")
-                }
-            }
         }
-    }
-}
 
-#Preview {
-    RangedQuestionSubview()
-}

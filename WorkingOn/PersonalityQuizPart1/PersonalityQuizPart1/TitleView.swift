@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TitleView: View {
     var body: some View {
+        NavigationStack {
         ZStack {
             Image("TitleImage")
                 .resizable()
@@ -38,20 +39,21 @@ struct TitleView: View {
                     )
                 Spacer()
                     .frame(height: 200)
-                NavigationLink {
-                    
-                } label: {
-                    Text("BEGIN")
-                        .font(.custom("Copperplate", size: 40))
-                        .bold()
-                        .foregroundStyle(.black)
-                        .padding(5)
-                        .background(
-                            Capsule()
-                                .foregroundStyle(.green)
-                        )
+                    NavigationLink {
+                        QuestionFlowView()
+                    } label: {
+                        Text("BEGIN")
+                            .font(.custom("Copperplate", size: 40))
+                            .bold()
+                            .foregroundStyle(.black)
+                            .padding(5)
+                            .background(
+                                Capsule()
+                                    .foregroundStyle(.green)
+                            )
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
         }
     }
