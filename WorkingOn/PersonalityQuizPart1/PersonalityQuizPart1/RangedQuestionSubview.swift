@@ -31,7 +31,7 @@ struct RangedQuestionSubview: View {
             quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[2].type]
         default:
             answer = quizManager.questionList[quizManager.currentQuestion].answers[3].text
-            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[4].type]
+            quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[3].type]
         }
     }
     
