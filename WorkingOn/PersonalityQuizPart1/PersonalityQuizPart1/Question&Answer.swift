@@ -18,6 +18,7 @@ struct Question: Identifiable {
     var savedAnswer2 = false
     var savedAnswer3 = false
     var savedAnswer4 = false
+    var savedSliderValue: Double = 0
     
 }
 enum ResponseType {

@@ -14,6 +14,13 @@ struct MultipleQuestionSubview: View {
     @State var answer4 = false
     @Binding var quizManager: QuizManager
     
+    func displaySavedAnswers() {
+        answer1 = quizManager.questionList[quizManager.currentQuestion].savedAnswer1
+        answer2 = quizManager.questionList[quizManager.currentQuestion].savedAnswer2
+        answer3 = quizManager.questionList[quizManager.currentQuestion].savedAnswer3
+        answer4 = quizManager.questionList[quizManager.currentQuestion].savedAnswer4
+    }
+    
     var body: some View {
         let current = quizManager.questionList[quizManager.currentQuestion]
                 VStack {
@@ -33,9 +40,11 @@ struct MultipleQuestionSubview: View {
                                 .onChange(of: answer1) {
                                     if answer1 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType.append(quizManager.questionList[quizManager.currentQuestion].answers[0].type)
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer1 = true
                                     } else {
                                         if let index = quizManager.questionList[quizManager.currentQuestion].savedAnswerType.firstIndex(of: current.answers[0].type) {
                                             quizManager.questionList[quizManager.currentQuestion].savedAnswerType.remove(at: index)
+                                            quizManager.questionList[quizManager.currentQuestion].savedAnswer1 = false
                                         }
                                     }
                                 }
@@ -44,9 +53,11 @@ struct MultipleQuestionSubview: View {
                                 .onChange(of: answer2) {
                                     if answer2 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType.append(quizManager.questionList[quizManager.currentQuestion].answers[1].type)
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer2 = true
                                     } else {
                                         if let index = quizManager.questionList[quizManager.currentQuestion].savedAnswerType.firstIndex(of: current.answers[1].type) {
                                             quizManager.questionList[quizManager.currentQuestion].savedAnswerType.remove(at: index)
+                                            quizManager.questionList[quizManager.currentQuestion].savedAnswer2 = false
                                         }
                                     }
                                 }
@@ -55,9 +66,11 @@ struct MultipleQuestionSubview: View {
                                 .onChange(of: answer3) {
                                     if answer3 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType.append(quizManager.questionList[quizManager.currentQuestion].answers[2].type)
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer3 = true
                                     } else {
                                         if let index = quizManager.questionList[quizManager.currentQuestion].savedAnswerType.firstIndex(of: current.answers[2].type) {
                                             quizManager.questionList[quizManager.currentQuestion].savedAnswerType.remove(at: index)
+                                            quizManager.questionList[quizManager.currentQuestion].savedAnswer3 = false
                                         }
                                     }
                                 }
@@ -66,9 +79,11 @@ struct MultipleQuestionSubview: View {
                                 .onChange(of: answer4) {
                                     if answer4 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType.append(quizManager.questionList[quizManager.currentQuestion].answers[3].type)
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = true
                                     } else {
                                         if let index = quizManager.questionList[quizManager.currentQuestion].savedAnswerType.firstIndex(of: current.answers[3].type) {
                                             quizManager.questionList[quizManager.currentQuestion].savedAnswerType.remove(at: index)
+                                            quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = false
                                         }
                                     }
                                 }
@@ -79,5 +94,6 @@ struct MultipleQuestionSubview: View {
             }
                     .scrollContentBackground(.hidden)
                 }
+                .onAppear(perform: displaySavedAnswers)
             }
         }

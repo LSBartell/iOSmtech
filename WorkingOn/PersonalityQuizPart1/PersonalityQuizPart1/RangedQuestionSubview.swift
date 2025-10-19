@@ -13,6 +13,11 @@ struct RangedQuestionSubview: View {
     @State var answer: String = "Not at all"
     @Binding var quizManager: QuizManager
     
+    func displaySavedSlider() {
+        value = quizManager
+            .questionList[quizManager.currentQuestion].savedSliderValue
+    }
+    
     func sliderSwitch(){
         switch Int(value) {
         case 1:
@@ -52,11 +57,13 @@ struct RangedQuestionSubview: View {
                     }
                     .onChange(of: value) {
                         sliderSwitch()
+                        quizManager.questionList[quizManager.currentQuestion].savedSliderValue = value
                     }
                 }
                 .scrollContentBackground(.hidden)
                 Spacer()
                 }
+            .onAppear(perform: displaySavedSlider)
             }
         }
 

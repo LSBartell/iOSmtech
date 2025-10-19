@@ -54,9 +54,13 @@ struct SingleQuestionSubview: View {
                                 .onChange(of: answer2) {
                                     if answer2 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [current.answers[1].type]
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer2 = true
                                         answer1 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer1 = false
                                         answer3 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer3 = false
                                         answer4 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = false
                                     }
                                 }
                                 .padding(5)
@@ -64,9 +68,13 @@ struct SingleQuestionSubview: View {
                                 .onChange(of: answer3) {
                                     if answer3 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [current.answers[2].type]
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer3 = true
                                         answer1 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer1 = false
                                         answer2 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer2 = false
                                         answer4 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = false
                                     }
                                 }
                                 .padding(5)
@@ -74,9 +82,13 @@ struct SingleQuestionSubview: View {
                                 .onChange(of: answer4) {
                                     if answer4 {
                                         quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [current.answers[3].type]
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = true
                                         answer1 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer1 = false
                                         answer2 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer2 = false
                                         answer3 = false
+                                        quizManager.questionList[quizManager.currentQuestion].savedAnswer4 = false
                                     }
                                 }
                                 .padding(5)
@@ -86,7 +98,7 @@ struct SingleQuestionSubview: View {
                     }
                     .scrollContentBackground(.hidden)
                 }
-                .onAppear(perform: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+                .onAppear(perform: displaySavedAnswers)
             }
         }
 
