@@ -47,6 +47,7 @@ struct QuestionFlowView: View {
                     if quizManager.currentQuestion < (quizManager.questionList.count - 1) {
                         Button {
                             quizManager.currentQuestion += 1
+                                print("current: \(quizManager.questionList[quizManager.currentQuestion - 1].savedAnswerType)")
                         } label: {
                             Image(systemName: "chevron.right")
                         }
