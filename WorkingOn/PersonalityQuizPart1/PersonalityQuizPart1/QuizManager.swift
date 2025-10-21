@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
-struct QuizManager: Identifiable {
+@Observable
+ class QuizManager: Identifiable {
     var id = UUID()
     
     var currentQuestion: Int = 0

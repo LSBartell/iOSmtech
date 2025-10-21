@@ -11,7 +11,7 @@ import Foundation
 struct RangedQuestionSubview: View {
     @State var value: Double = 0
     @State var answer: String = "Not at all"
-    @Binding var quizManager: QuizManager
+    @Environment(QuizManager.self) var quizManager
     
     func displaySavedSlider() {
         value = quizManager
@@ -36,6 +36,7 @@ struct RangedQuestionSubview: View {
     }
     
     var body: some View {
+        @Bindable var quizManager = quizManager
         let current = quizManager.questionList[quizManager.currentQuestion]
             VStack {
                 ScrollView {

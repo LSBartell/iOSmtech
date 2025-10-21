@@ -29,6 +29,6 @@ struct Answer {
     var text: String
     var type: BattlefieldClass
 }
-enum BattlefieldClass {
-    case assault, engineer, recon, support
+enum BattlefieldClass: String {
+    case assault = "Assault", engineer = "Engineer", recon = "Recon", support = "Support"
 }

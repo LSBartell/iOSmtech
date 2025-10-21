@@ -8,37 +8,40 @@
 import SwiftUI
 
 struct TitleView: View {
+    
+    @State var quizManager = QuizManager()
+    
     var body: some View {
         NavigationStack {
-        ZStack {
-            Image("TitleImage")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 900)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                    .frame(height: 100)
-                Text("BATTLEFIELD")
-                    .font(.custom("Copperplate", size: 55))
-                    .bold()
-                    .foregroundStyle(Gradient(colors: [.white, .gray]))
-                    .padding(4)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .glassEffect(.clear)
-                    )
-                Text("What is the best class for you?")
-                    .font(.custom("Copperplate", size: 20))
-                    .foregroundStyle(.white)
-                    .bold()
-                    .padding(3)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .glassEffect(.clear)
-                    )
-                Spacer()
-                    .frame(height: 200)
+            ZStack {
+                Image("TitleImage")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 900)
+                    .ignoresSafeArea()
+                VStack {
+                    Spacer()
+                        .frame(height: 100)
+                    Text("BATTLEFIELD")
+                        .font(.custom("Copperplate", size: 55))
+                        .bold()
+                        .foregroundStyle(Gradient(colors: [.white, .gray]))
+                        .padding(4)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .glassEffect(.clear)
+                        )
+                    Text("What is the best class for you?")
+                        .font(.custom("Copperplate", size: 20))
+                        .foregroundStyle(.white)
+                        .bold()
+                        .padding(3)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .glassEffect(.clear)
+                        )
+                    Spacer()
+                        .frame(height: 200)
                     NavigationLink {
                         QuestionFlowView()
                     } label: {
@@ -54,8 +57,10 @@ struct TitleView: View {
                     }
                     Spacer()
                 }
+                
             }
         }
+        .environment(quizManager)
     }
 }
 

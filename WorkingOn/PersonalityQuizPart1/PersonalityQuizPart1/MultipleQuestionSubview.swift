@@ -12,7 +12,7 @@ struct MultipleQuestionSubview: View {
     @State var answer2 = false
     @State var answer3 = false
     @State var answer4 = false
-    @Binding var quizManager: QuizManager
+    @Environment(QuizManager.self) var quizManager
     
     func displaySavedAnswers() {
         answer1 = quizManager.questionList[quizManager.currentQuestion].savedAnswer1
@@ -22,6 +22,7 @@ struct MultipleQuestionSubview: View {
     }
     
     var body: some View {
+        @Bindable var quizManager = quizManager
         let current = quizManager.questionList[quizManager.currentQuestion]
                 VStack {
                     ScrollView {
