@@ -1,16 +1,21 @@
 //
-//  ResultsView.swift
+//  ResultsViewModel.swift
 //  PersonalityQuizPart1
 //
-//  Created by Logan Steven Bartell on 10/13/25.
+//  Created by Logan Steven Bartell on 10/21/25.
 //
-
+import Foundation
 import SwiftUI
 
-struct ResultsView: View {
-    @Environment(QuizManager.self) var quizManager
-    @State var quizAnswer = ""
-    @State var answerDescription = ""
+@Observable
+class ResultsViewModel {
+    var quizManager: QuizManager
+    var quizAnswer = ""
+    var answerDescription = ""
+    
+    init(quizManager: QuizManager) {
+        self.quizManager = quizManager
+    }
     
     func getMostCommonAnswer() {
         var result: [BattlefieldClass : Int] = [
@@ -59,43 +64,4 @@ struct ResultsView: View {
             answerDescription = "Error"
         }
     }
-    
-    var body: some View {
-        @Bindable var quizManager = quizManager
-        ZStack {
-            Image("TitleImage")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 900)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                    .frame(height: 100)
-                Text(quizAnswer)
-                    .font(.custom("Copperplate", size: 55))
-                    .bold()
-                    .foregroundStyle(Gradient(colors: [.white, .gray]))
-                    .padding(4)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .glassEffect(.clear)
-                            .foregroundStyle(.orange)
-                    )
-                Text(answerDescription)
-                    .frame(width: 350)
-                    .font(.custom("Copperplate", size: 20))
-                    .foregroundStyle(.white)
-                    .bold()
-                    .padding(3)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .glassEffect(.clear)
-                    )
-                Spacer()
-                    .frame(height: 200)
-            }
-        }
-        .onAppear(perform: getMostCommonAnswer)
-    }
 }
-
