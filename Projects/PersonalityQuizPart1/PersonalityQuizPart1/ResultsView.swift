@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResultsView: View {
     @Environment(QuizManager.self) var quizManager
-    @State var resultsViewModel: ResultsViewModel? = nil
+    @State var resultsViewModel: ResultsViewModel = ResultsViewModel()
     
     var body: some View {
         ZStack {
@@ -21,17 +21,17 @@ struct ResultsView: View {
             VStack {
                 Spacer()
                     .frame(height: 100)
-                Text(resultsViewModel?.quizAnswer ?? "")
+                Text(resultsViewModel.quizAnswer)
                     .font(.custom("Copperplate", size: 55))
                     .bold()
                     .foregroundStyle(Gradient(colors: [.white, .gray]))
                     .padding(4)
                     .background(
-                        RoundedRectangle(cornerRadius: 20)
+                        RoundedRectangle(cornerRadius: 50)
                             .glassEffect(.clear)
                             .foregroundStyle(.orange)
                     )
-                Text(resultsViewModel?.answerDescription ?? "")
+                Text(resultsViewModel.answerDescription)
                     .frame(width: 350)
                     .font(.custom("Copperplate", size: 20))
                     .foregroundStyle(.white)
@@ -46,8 +46,8 @@ struct ResultsView: View {
             }
         }
         .onAppear {
-            resultsViewModel = ResultsViewModel(quizManager: quizManager)
-            resultsViewModel?.getMostCommonAnswer()
+            resultsViewModel.quizManager = quizManager
+            resultsViewModel.getMostCommonAnswer()
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct RangedQuestionSubview: View {
-    @State var value: Double = 0
+    @State var value: Double = 1
     @State var answer: String = "Not at all"
     @Environment(QuizManager.self) var quizManager
     
@@ -29,9 +29,11 @@ struct RangedQuestionSubview: View {
         case 3:
             answer = quizManager.questionList[quizManager.currentQuestion].answers[2].text
             quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[2].type]
-        default:
+        case 4:
             answer = quizManager.questionList[quizManager.currentQuestion].answers[3].text
             quizManager.questionList[quizManager.currentQuestion].savedAnswerType = [quizManager.questionList[quizManager.currentQuestion].answers[3].type]
+        default:
+            answer = ""
         }
     }
     

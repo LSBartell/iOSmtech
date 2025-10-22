@@ -17,11 +17,11 @@ struct ContentView: View {
                 Text(events)
                     .onChange(of: scenePhase) { _, newPhase in
                         if newPhase == .inactive {
-                            events.append("App Inactive ")
+                            events.append("App Inactive. ")
                         } else if newPhase == .active {
-                            events.append("App activated ")
+                            events.append("App activated. ")
                         } else if newPhase == .background {
-                            events.append("App backgrounded ")
+                            events.append("App backgrounded. ")
                         }
                     }
                 NavigationLink {

@@ -12,10 +12,10 @@ struct SecondView: View {
     var body: some View {
         Text(events)
             .onAppear {
-                events.append("Second View Appear")
+                events.append("Second View Appear. ")
             }
             .onDisappear {
-                events.append("Second View Disappear")
+                events.append("Second View Disappear. ")
             }
     }
 }

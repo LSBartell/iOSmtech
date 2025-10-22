@@ -9,13 +9,10 @@ import SwiftUI
 
 @Observable
 class ResultsViewModel {
-    var quizManager: QuizManager
+    
+    var quizManager: QuizManager?
     var quizAnswer = ""
     var answerDescription = ""
-    
-    init(quizManager: QuizManager) {
-        self.quizManager = quizManager
-    }
     
     func getMostCommonAnswer() {
         var result: [BattlefieldClass : Int] = [
@@ -27,7 +24,7 @@ class ResultsViewModel {
         
         var quizAnswertype: [BattlefieldClass] = []
         
-        for question in quizManager.questionList {
+        for question in quizManager?.questionList ?? [] {
             for type in question.savedAnswerType {
                 switch type {
                 case .assault:
