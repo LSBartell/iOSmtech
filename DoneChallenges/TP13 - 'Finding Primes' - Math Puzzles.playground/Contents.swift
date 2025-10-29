@@ -29,7 +29,7 @@ func blackDiamond(_ input: Int) -> [Int] {
     guard input > 1 else { return [] }
     var answer: [Int] = []
         for number in (2...input) {
-            if !(2..<number).contains(where: { number % $0 == 0 }) {
+            if isPrimeNumber(number) {
                 answer.append(number)
             }
         }
