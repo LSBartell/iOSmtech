@@ -13,6 +13,8 @@ class CalendarViewModel {
     private(set) var today: Day? // set by current day when fetched
     private(set) var isLoading: Bool = false //for displaying loading on view when awaiting network call
     private(set) var errorMessage: String? // for displaying error on view when network call fails
+    private var showingObjective: Bool = false
+    
     private let networkClent: MocknetworkClient
     // creating and initializing instance of Network call in class
     init(networkClent: MocknetworkClient) {

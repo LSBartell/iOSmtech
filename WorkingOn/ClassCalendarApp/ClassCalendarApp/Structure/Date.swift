@@ -10,4 +10,5 @@ struct Date {
     let year: Int
     let month: Month // see month structure
     let dayInMonth: Int
+    let dayOfWeek: String
 }
