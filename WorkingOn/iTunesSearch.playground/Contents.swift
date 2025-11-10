@@ -1,9 +1,9 @@
 import UIKit
 
 var query: [String: String] = [
-    "term" : "Apple",
+    "term" : "led+zeppelin",
     "media" : "music",
-    "limit" : "1"
+    "limit" : "5"
 ]
 
 //musicSearchQuery(artist: "Led Zeppelin")
@@ -80,7 +80,9 @@ func fetchItems(matching query: [String: String]) async throws -> [StoreItem] {
 Task {
     do {
         let results = try await fetchItems(matching: query)
-        print(results)
+        for result in results {
+            print("Song: \(result.songTitle) \nArtist: \(result.artist) \nCollection: \(result.collectionTitle) \nPrice: \(result.trackPrice)$")
+        }
     } catch {
         print(error)
     }
