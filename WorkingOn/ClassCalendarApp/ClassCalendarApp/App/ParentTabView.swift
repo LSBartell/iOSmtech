@@ -23,7 +23,7 @@ struct ParentTabView: View {
                     ContentUnavailableView("Could not load data", systemImage: "exclamationmark.triangle", description: Text(message))
                 } else {
                     TabView {
-                        TodayView()
+                        TodayView(viewModel: viewModel)
                         
                         FullCalendarView()
                         

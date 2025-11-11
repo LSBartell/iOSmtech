@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodayView: View {
-        @State var viewModel: CalendarViewModel
+    @State var viewModel: CalendarViewModel
     
     var body: some View {
             ZStack {
@@ -94,12 +94,5 @@ struct TodayView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingObjectives) {
-                ObjectiveSheet()
-        }
     }
-}
-
-#Preview {
-    TodayView()
 }
