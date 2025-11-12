@@ -6,8 +6,10 @@
 //
 import Foundation
 
-struct Day {
-    let date: Date // see Date Structure
+struct Day: Identifiable {
+    var id = UUID()
+    
+    var date: Date
     let lessonID: String
     let lessonName: String
     let mainObjective: String

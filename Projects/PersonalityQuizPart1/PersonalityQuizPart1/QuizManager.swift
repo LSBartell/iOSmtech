@@ -50,13 +50,13 @@ import Foundation
             savedAnswerType: []
         ),
         Question(
-            text: "Test Question",
+            text: "How do you workout?",
             type: .single,
             answers: [
-                Answer(text: "answer1", type: .assault),
-                Answer(text: "answer2", type: .engineer),
-                Answer(text: "answer3", type: .recon),
-                Answer(text: "answer4", type: .support)
+                Answer(text: "Running", type: .assault),
+                Answer(text: "Weight training", type: .engineer),
+                Answer(text: "Not at all", type: .recon),
+                Answer(text: "Push ups, sit ups, chin ups", type: .support)
             ],
             questionNumber: 3,
             savedAnswerType: []

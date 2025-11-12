@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-struct ObjectiveSheet: View {
-    
+struct InfoSheet: View {
+    var infoString: String
     var body: some View {
-        Text("Objectives")
+        Text("\(infoString)")
     }
 }
 
-#Preview {
-    ObjectiveSheet()
-}
