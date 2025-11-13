@@ -37,22 +37,22 @@ struct DayView: View {
                     RoundedRectangle(cornerRadius: 30)
                         .scenePadding(.horizontal)
                         .foregroundStyle(.white)
-                    Group {
-                        if viewModel.isLoading {
+                    Group { //for loading animation
+                        if viewModel.isLoading { // set by calling fetchDay at bottom of view, only used by today page as the full calendar pages already have their data from full calendar tab
                             ProgressView("Loading")
-                        } else if let message = viewModel.errorMessage {
+                        } else if let message = viewModel.errorMessage { //error if cannot load from network
                             ContentUnavailableView("Could not Load", systemImage: "exclamationmark.triangle", description: Text(message))
-                        } else {
+                        } else {//shows the main view if everything loads
                             VStack {
                                 Text("\(viewModel.dayOfWeek ?? "")") // to be set by ViewModel
                                     .font(.custom("Verdana", size: 30))
                                     .bold()
                                     .underline()
                                 HStack {
-                                    Text("Date: \(viewModel.displayDay?.date.formatted(date: .numeric, time: .omitted) ?? "")") // to be set by ViewModel
+                                    Text("Date: \(viewModel.displayDay?.date.formatted(date: .numeric, time: .omitted) ?? "")") // date formatted to show numeric date
                                         .padding(.horizontal, 25)
                                     Spacer()
-                                    Text("Lesson ID: \(viewModel.displayDay?.lessonID ?? "")")// to be set
+                                    Text("Lesson ID: \(viewModel.displayDay?.lessonID ?? "")")
                                         .padding(.horizontal, 25)
                                 }
                                 Text(viewModel.displayDay?.lessonName ?? "")// to be set
@@ -61,6 +61,7 @@ struct DayView: View {
                                     .frame(width: 350, height: 5)
                                 Spacer()
                                     .frame(height: 20)
+                                //buttons for all of the sheets
                                 Button(action: { viewModel.showingObjective = true }) {
                                     Text("Objectives")
                                         .modifier(ButtonViewModifier())
@@ -119,7 +120,7 @@ struct DayView: View {
                     }
                 }
                 .task {
-                    viewModel.fetchDay()
+                    viewModel.fetchDay() // called to load current day on today tab
                 }
             }
         }

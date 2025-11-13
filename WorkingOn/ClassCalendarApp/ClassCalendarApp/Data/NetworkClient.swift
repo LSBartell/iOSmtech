@@ -11,11 +11,11 @@ actor MocknetworkClient { // functions called by CalendarViewModel to populate t
         try await Task.sleep(nanoseconds: 500_000_000) //simulates network delay
         return [
             Day(date: Date.now, lessonID: "TP01", lessonName: "Learning iOS", mainObjective: "Learn how to code", readingDue: "Chapter1", assignmentsDue: "Nothing due", newAssignments: "Read Chapter2", daiyCodeChallenge: "For Loops", wordOfTheDay: "Variable"),
-            Day(date: Date.now.advanced(by: 86400), lessonID: "two2", lessonName: "Learning xcode", mainObjective: "Learn to use IDE", readingDue: "Chapter2", assignmentsDue: "Playgrounds Lab", newAssignments: "Read Chapter3", daiyCodeChallenge: "While Loops", wordOfTheDay: "IDE"),
-            Day(date: Date.now.advanced(by: 172800), lessonID: "three3", lessonName: "SwiftUI", mainObjective: "Learn to build views in SwiftUI", readingDue: "Chapter3", assignmentsDue: "Loops Lab", newAssignments: "Read Chpter4", daiyCodeChallenge: "Complex Math", wordOfTheDay: "JSON")
+            Day(date: Date.now.advanced(by: 86400), lessonID: "TP02", lessonName: "Learning xcode", mainObjective: "Learn to use IDE", readingDue: "Chapter2", assignmentsDue: "Playgrounds Lab", newAssignments: "Read Chapter3", daiyCodeChallenge: "While Loops", wordOfTheDay: "IDE"),
+            Day(date: Date.now.advanced(by: 172800), lessonID: "TP03", lessonName: "SwiftUI", mainObjective: "Learn to build views in SwiftUI", readingDue: "Chapter3", assignmentsDue: "Loops Lab", newAssignments: "Read Chpter4", daiyCodeChallenge: "Complex Math", wordOfTheDay: "JSON")
         ]
     }
-    func fetch(date: Date) async throws -> Day {
+    func fetch(date: Date) async throws -> Day { // called in CalendarViewModel line 47
         try await Task.sleep(nanoseconds: 999_000_000)// simulates network delay
         return Day(date: date, lessonID: "TP01", lessonName: "Learning iOS", mainObjective: "Learn how to code", readingDue: "Chapter1", assignmentsDue: "Nothing due", newAssignments: "Read Chapter2", daiyCodeChallenge: "For Loops", wordOfTheDay: "Variable")
     }

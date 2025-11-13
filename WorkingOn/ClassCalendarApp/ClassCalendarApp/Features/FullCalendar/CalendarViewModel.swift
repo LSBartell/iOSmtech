@@ -14,14 +14,18 @@ class CalendarViewModel {
     private(set) var isLoading: Bool = false //for displaying loading on view when awaiting network call
     private(set) var errorMessage: String? // for displaying error on view when network call fails
     
-    var displayDate: Date
+    var displayDate: Date // for use in the fetchDay function for Today tab
+    // bools for showing the infoSheet for each subject, used in DayView buttons
     var showingObjective: Bool = false
     var showingReadingDue: Bool = false
     var showingAssignmentsDue: Bool = false
     var showingNewAssignments:Bool = false
     var showingDailyCodeChallenge: Bool = false
     var showingWordOfTheDay:Bool = false
+    //for showing day of week, used to determine if the day to display is today rather than a weekday
     var dayOfWeek: String?
+    
+    let dateFormatter = DateFormatter()//for getting the day of the week
     
     
     

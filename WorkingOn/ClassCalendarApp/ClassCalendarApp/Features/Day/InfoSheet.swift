@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//view for displaying more detailed info on each sheet, used by buttons on DayView
 struct InfoSheet: View {
     var infoString: String
     var body: some View {

@@ -14,14 +14,21 @@ struct ParentTabView: View {
                 
                 TabView {
                     DayView(
-                        viewModel: CalendarViewModel(networkClent: MocknetworkClient(), displayDate: Date.now, displayDay: nil, dayOfWeek: "Today")
+                        viewModel: CalendarViewModel(networkClent: MocknetworkClient(), displayDate: Date.now, displayDay: nil, dayOfWeek: "Today") // makes sure the day showing is set to Today, see CalendarViewModel line 52
                     )
+                    .tabItem {
+                        Image(systemName: "ellipsis.calendar")
+                    }
                     
                     FullCalendarView(
                         viewModel: CalendarViewModel(networkClent: MocknetworkClient(), displayDate: Date.now, displayDay: nil, dayOfWeek: nil)
                     )
+                    .tabItem {
+                        Image(systemName: "calendar")
+                    }
                     
                 }
+                .tint(.forground)
             }
         }
     }

@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+//a view used in full calendar tab to display basic info about each day, initialized with day structs from days stored in CalendarViewModel
+
 struct FullCalendarDayView: View {
+    var day: Day
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -17,8 +20,9 @@ struct FullCalendarDayView: View {
                 .frame(width: 345, height: 115)
                 .foregroundStyle(.white)
             VStack {
-                Text("Monday: 11/11/25")
+                Text("\(day.date.formatted(date: .numeric, time: .omitted))")
                     .font(.custom("Verdana", size: 25))
+                    .foregroundStyle(.black)
                     .bold()
                     .padding(6)
                     .background(
@@ -28,14 +32,16 @@ struct FullCalendarDayView: View {
                 HStack {
                     Spacer()
                         .frame(width: 35)
-                    Text("Lesson: Learn to code")
+                    Text("Lesson: \(day.lessonName)")
+                        .foregroundStyle(.black)
                     Spacer()
-                    Text("ID: TP01")
+                    Text("ID: \(day.lessonID)")
+                        .foregroundStyle(.black)
                     Spacer()
                         .frame(width: 35)
                 }
                 .padding(20)
-                Text("Due: Nothing")
+                Text("Due: \(day.assignmentsDue)")
                     .font(.custom("Verdana", size: 15))
                     .foregroundStyle(.white)
                     .padding(6)
@@ -49,6 +55,3 @@ struct FullCalendarDayView: View {
     }
 }
 
-#Preview {
-    FullCalendarDayView()
-}

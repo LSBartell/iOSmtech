@@ -17,7 +17,7 @@ struct TitleView: View {
                 Image("TitleImage")
                     .resizable()
                     .scaledToFill()
-                    .frame(height: 900)
+                    .frame(height: 950)
                     .ignoresSafeArea()
                 VStack {
                     Spacer()

@@ -5,6 +5,7 @@
 //  Created by Logan Steven Bartell on 11/6/25.
 //
 import Foundation
+//struct for a day, used to build days in networkclient and stored in calenader view model
 
 struct Day: Identifiable {
     var id = UUID()
