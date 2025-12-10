@@ -10,13 +10,15 @@ import SwiftData
 
 struct JournalEntryDetailView: View {
     var journalEntry: JournalEntry?
+    var journal: Journal
     @State var titleString = ""
     @State var bodyString = ""
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
-    init(journalEntry: JournalEntry?) {
+    init(journalEntry: JournalEntry?, journal: Journal) {
         self.journalEntry = journalEntry
+        self.journal = journal
         _titleString = State(initialValue: journalEntry?.title ?? "")
         _bodyString = State(initialValue: journalEntry?.body ?? "")
     }
@@ -47,7 +49,7 @@ struct JournalEntryDetailView: View {
     
     func save() {
         if journalEntry == nil {
-            context.insert(JournalEntry(title: titleString, body: bodyString, date: journalEntry?.date ?? Date.now))
+            context.insert(JournalEntry(title: titleString, body: bodyString, date: journalEntry?.date ?? Date.now, journal: journal))
         } else {
             journalEntry?.title = titleString
             journalEntry?.body = bodyString

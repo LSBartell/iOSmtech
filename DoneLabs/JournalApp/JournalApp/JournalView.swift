@@ -8,14 +8,29 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct JournalView: View {
+    @State var journal: Journal
     @Environment(\.modelContext) private var context
-    @Query(sort: \JournalEntry.date, order: .reverse) var journalEntries: [JournalEntry]
+    @Query var journalEntries: [JournalEntry]
+    
+    init(journal: Journal) {
+        self.journal = journal
+        let journalId = journal.persistentModelID
+        
+        _journalEntries = Query(
+            filter: #Predicate<JournalEntry> { entry in
+                entry.journal?.persistentModelID == journalId
+            },
+            sort: \.date,
+            order: .reverse
+        )
+    }
+
     @State var showAddNew = false
     var body: some View {
         NavigationStack {
             VStack {
-                Text("My Journal")
+                Text(journal.title)
                     .font(.largeTitle)
                     .bold()
                     .underline()
@@ -27,7 +42,7 @@ struct ContentView: View {
                         ForEach(journalEntries) { entry in
                             Section {
                                 NavigationLink {
-                                    JournalEntryDetailView(journalEntry: entry)
+                                    JournalEntryDetailView(journalEntry: entry, journal: journal)
                                 } label: {
                                     HStack {
                                         Text(entry.title)
@@ -46,7 +61,7 @@ struct ContentView: View {
                             Image(systemName: "plus")
                         }
                         .sheet(isPresented: $showAddNew) {
-                            JournalEntryDetailView(journalEntry: nil)
+                            JournalEntryDetailView(journalEntry: nil, journal: journal)
                         }
                     }
                 }
@@ -62,7 +77,3 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: JournalEntry.self)
-}

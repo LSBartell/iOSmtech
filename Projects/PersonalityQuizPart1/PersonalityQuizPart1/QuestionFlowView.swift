@@ -80,10 +80,10 @@ struct QuestionFlowView: View {
     }
 }
 
-#Preview {
-    @Previewable @State var quizManager = QuizManager()
-    NavigationStack {
-        QuestionFlowView()
-    }
-        .environment(quizManager)
-}
+//#Preview {
+//    @Previewable @State var quizManager = QuizManager()
+//    NavigationStack {
+//        QuestionFlowView()
+//    }
+//        .environment(quizManager)
+//}
