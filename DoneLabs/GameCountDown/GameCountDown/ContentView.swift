@@ -42,7 +42,7 @@ struct ContentView: View {
                         Circle()
                             .frame(width: 100)
                             .foregroundStyle(.red)
-                            .matchedGeometryEffect(id: "red1ToRed2", in: animation), in: animation)
+                            .matchedGeometryEffect(id: "red1ToRed2", in: animation)
                         Spacer()
                             .frame(width: 100)
                     case .red2ToYellow:
