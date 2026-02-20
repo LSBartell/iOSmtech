@@ -52,10 +52,10 @@ struct DayView: View {
                                     Text("Date: \(viewModel.displayDay?.date.formatted(date: .numeric, time: .omitted) ?? "")") // date formatted to show numeric date
                                         .padding(.horizontal, 25)
                                     Spacer()
-                                    Text("Lesson ID: \(viewModel.displayDay?.lessonID ?? "")")
+                                    Text("Lesson ID: \(viewModel.displayDay?.lessonID ?? "No ID")")
                                         .padding(.horizontal, 25)
                                 }
-                                Text(viewModel.displayDay?.lessonName ?? "")// to be set
+                                Text(viewModel.displayDay?.lessonName ?? "No Name")// to be set
                                     .bold()
                                 RoundedRectangle(cornerRadius: 30)
                                     .frame(width: 350, height: 5)
@@ -101,22 +101,38 @@ struct DayView: View {
                         }
                     }
                     .sheet(isPresented: $viewModel.showingObjective) {
-                        InfoSheet(infoString: viewModel.displayDay?.mainObjective ?? "")
+                        if viewModel.displayDay?.mainObjective != "" {
+                            InfoSheet(infoString: viewModel.displayDay?.mainObjective ?? "No Objectives Today")
+                        } else {
+                            InfoSheet(infoString: "No Objectives Today")
+                        }
                     }
                     .sheet(isPresented: $viewModel.showingReadingDue) {
-                        InfoSheet(infoString: viewModel.displayDay?.readingDue ?? "")
+                        if viewModel.displayDay?.readingDue != "" {
+                            InfoSheet(infoString: viewModel.displayDay?.readingDue ?? "No Reading Due")
+                        } else {
+                            InfoSheet(infoString: "No Reading Due")
+                        }
                     }
                     .sheet(isPresented: $viewModel.showingAssignmentsDue) {
-                        InfoSheet(infoString: viewModel.displayDay?.assignmentsDue ?? "")
+                        AssignmentSheet(assignments: viewModel.displayDay?.assignmentsDue ?? [])
                     }
                     .sheet(isPresented: $viewModel.showingNewAssignments) {
-                        InfoSheet(infoString: viewModel.displayDay?.newAssignments ?? "")
+                        AssignmentSheet(assignments: viewModel.displayDay?.newAssignments ?? [])
                     }
                     .sheet(isPresented: $viewModel.showingDailyCodeChallenge) {
-                        InfoSheet(infoString: viewModel.displayDay?.daiyCodeChallenge ?? "")
+                        if viewModel.displayDay?.dailyCodeChallenge != "" {
+                            InfoSheet(infoString: viewModel.displayDay?.dailyCodeChallenge ?? "No Daily Code Challenge")
+                        } else {
+                            InfoSheet(infoString: "No Daily Code Challenge")
+                        }
                     }
                     .sheet(isPresented: $viewModel.showingWordOfTheDay) {
-                        InfoSheet(infoString: viewModel.displayDay?.wordOfTheDay ?? "")
+                        if viewModel.displayDay?.wordOfTheDay != "" {
+                            InfoSheet(infoString: viewModel.displayDay?.wordOfTheDay ?? "No Word Of The Day")
+                        } else {
+                            InfoSheet(infoString: "No Word Of The Day")
+                        }
                     }
                 }
                 .task {

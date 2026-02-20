@@ -9,6 +9,8 @@ import Combine
 
 @Observable
 class CalendarViewModel {
+    var user: User
+    
     var days: [Day] = [] // all days fetched from network client will be stored here
     private(set) var displayDay: Day? // set by current day when fetched
     private(set) var isLoading: Bool = false //for displaying loading on view when awaiting network call
@@ -27,24 +29,28 @@ class CalendarViewModel {
     
     let dateFormatter = DateFormatter()//for getting the day of the week
     
+    private let apiController = APIController()
     
-    
-    private let networkClent: MocknetworkClient
+    private let mockNetworkClent: MocknetworkClient
     // creating and initializing instance of Network call in class
-    init(networkClent: MocknetworkClient, displayDate: Date, displayDay: Day?, dayOfWeek: String?) {
-        self.networkClent = networkClent
+    init(networkClent: MocknetworkClient, displayDate: Date, displayDay: Day?, dayOfWeek: String?, user: User) {
+        self.mockNetworkClent = networkClent
         self.displayDate = displayDate
         self.displayDay = displayDay
         self.dayOfWeek = dayOfWeek
+        self.user = user
     }
     
     func fetchCalendarDays() { //used to fetch all data from mock network on NetworkClient
         Task {
             isLoading = true // set loading to true when function is called
-            defer { isLoading = false; print(days) } // set loading to false when task ends
+            defer { isLoading = false } // set loading to false when task ends
             do {
-                days = try await networkClent.fetchDays() // calls fetchdays function from network client to return array of days
-            } catch { errorMessage = "Failed to load calendar" }
+                days = try await apiController.fetchAllDays(secret: user.secret) // calls fetchdays function from network client to return array of days
+            } catch {
+                print(error)
+                errorMessage = "Failed to load calendar"
+            }
         }
     }
     
@@ -54,7 +60,13 @@ class CalendarViewModel {
             defer { isLoading = false }
             do {
                 if dayOfWeek == "Today" {
-                    displayDay = try await networkClent.fetch(date: displayDate)
+//                    print(user.secret)
+                    displayDay = try await apiController.fetchToday(secret: user.secret)
+//                    print("\(displayDay, default: "no entry")")
+                } else {
+                    displayDay = try await apiController.fetchDayDate(secret: user.secret, date: (displayDay?.date.formatted(date: .numeric, time: .omitted))!)
+//                    print(displayDay?.assignmentsDue)
+//                    print(displayDay?.newAssignments)
                 }
             } catch { errorMessage = "Failed to load date" }
         }

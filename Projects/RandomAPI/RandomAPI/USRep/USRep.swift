@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct USRep: Codable, Identifiable {
+struct USRep: Codable, Identifiable, Equatable {
     var id = UUID()
     let name: String
     let party: String
@@ -23,5 +23,14 @@ struct USRep: Codable, Identifiable {
 
 struct USRepSearchResponse: Codable {
     let results: [USRep]
+}
+
+extension USRep {
+    static func == (lhs: USRep, rhs: USRep) -> Bool {
+        return lhs.name == rhs.name &&
+               lhs.party == rhs.party &&
+               lhs.state == rhs.state &&
+               lhs.link == rhs.link
+    }
 }
 

@@ -59,4 +59,21 @@ class USRepAPIController: USRepAPIControllerProtocol {
     }
 }
 
+class StubMockUSRepAPIController: USRepAPIControllerProtocol {
+    
+    func fetchUSReps(zipCode: String) async throws -> [USRep] {
+        if zipCode == "Meh" {
+            [USRep(name: "Logan", party: "Da Bomb", state: "Utah", link: "Nah no link brah")]
+        } else {
+            throw FakeError.fakeError
+        }
+    }
+    
+}
+
+
+
+enum FakeError: Error {
+    case fakeError
+}
 

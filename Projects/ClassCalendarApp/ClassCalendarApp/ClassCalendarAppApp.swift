@@ -11,7 +11,7 @@ import SwiftUI
 struct ClassCalendarAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ParentTabView()
+            UserSignInView(viewModel: UserSignInViewModel())
         }
     }
 }
