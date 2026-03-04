@@ -85,11 +85,11 @@ struct ContentView: View {
     private func selectRandomUsersView() -> some View {
         VStack {
             Text("Select Number of random users")
-            Picker("Select number of random Users", selection: $selectedNumber) {
+            Picker("Select number of random Users", selection: $selectedNumber, content: {
                 ForEach(0..<(users.count + 1), id: \.self) { number in
                     Text("\(number)")
                 }
-            }
+            })
             Button("Select Users") {
                 selectRandom()
             }

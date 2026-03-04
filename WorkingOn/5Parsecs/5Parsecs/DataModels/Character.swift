@@ -21,6 +21,9 @@ class Character {
     var weapons: [Weapon]
     var implants: [Implant]
     var consumables: [Consumable]
+    var armor: Armor?
+    var screen: Screen?
+    var utilityDevices: [UtilityDevice]
     
     init(name: String, notes: String, species: Species, reactions: Int, speed: Int, combat: Int, toughness: Int, savvy: Int, weapons: [Weapon], implants: [Implant]) {
         self.name = name

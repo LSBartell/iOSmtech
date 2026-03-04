@@ -20,7 +20,7 @@ class Weapon {
     var mod: WeaponMod?
     var sight: WeaponSight?
     
-    init(type: String, weaponDescription: String, name: String? = nil, range: Int, shots: Int, damage: Int, traits: [WeaponTrait], mod: WeaponMod?) {
+    private init(type: String, weaponDescription: String, name: String? = nil, range: Int, shots: Int, damage: Int, traits: [WeaponTrait], mod: WeaponMod?) {
         self.type = type
         self.weaponDescription = weaponDescription
         self.name = name

@@ -8,4 +8,5 @@ import Foundation
 
 struct Implant {
     let name: String
+    let effect: String
 }
